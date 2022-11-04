@@ -1,0 +1,42 @@
+<div class="container p-5">
+    <a href="#" routerLink="/create/" class="btn btn-primary">Create New Student</a>
+    
+    <table class="table mt-5">
+      <thead class="table-dark table-hover">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Title</th>
+          <th scope="col">Price per class</th>
+          <th scope="col">Classes per month</th>
+          <th scope="col">Class Dates</th>
+          <th scope="col">Time Lapse(difference)</th>
+          <th scope="col" width="220px">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr scope="row" *ngFor="let student of students">
+          <td>{{ student.id }}</td>
+          <td>{{ student.name }}</td>
+          <td>R${{ student.price }},00</td>
+          <td>{{ student.quantity }}</td>
+          <td>{{ student.scheduled }}</td>
+          <td>{{ student.auxHour }} / <span *ngIf="student.timelapse > 0">+</span>{{ student.timelapse }}</td>
+          <td>
+            <a href="#" [routerLink]="['/', student.id, 'edit']" class="btn btn-primary btn-sm active m-1">Edit</a>
+            <button type="button" (click)="deleteStudent(student.id)" class="btn btn-secondary btn-sm m-1">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot class="table-dark">
+        <tr>
+          <td>Total per month</td>
+          <td></td>
+          <td>R$ {{ totalMoney }},00</td>
+          <td>{{ totalClasses }}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
+ </div>

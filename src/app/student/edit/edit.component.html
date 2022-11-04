@@ -1,0 +1,54 @@
+<div class="container">
+    <h1>Update Student</h1>
+  
+    <a href="#" routerLink="/" class="btn btn-primary">Back</a>
+        
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="form-group row mt-2">
+            <label for="name" class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-10">
+              <input type="text" [(ngModel)]="student.name" formControlName="name" class="form-control" id="name" placeholder="Name">
+            </div>
+            <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
+                <div *ngIf="f.name.errors?.required">Name is required.</div>
+            </div>
+        </div>
+        <div class="form-group row mt-2">
+            <label for="price" class="col-sm-2 col-form-label">Price</label>
+            <div class="col-sm-10">
+              <input type="number" [(ngModel)]="student.price" formControlName="price" class="form-control" id="price" placeholder="Price">
+            </div>
+            <div *ngIf="f.price.touched && f.price.invalid" class="alert alert-danger">
+                <div *ngIf="f.price.errors?.required">Price is required.</div>
+            </div>
+        </div>
+        <div class="form-group row mt-2">
+            <label for="quantity" class="col-sm-2 col-form-label">Classes per Month</label>
+            <div class="col-sm-10">
+              <input type="number"  [(ngModel)]="student.quantity" formControlName="quantity" class="form-control" id="quantity" placeholder="Classes per month">
+            </div>
+            <div *ngIf="f.quantity.touched && f.quantity.invalid" class="alert alert-danger">
+                <div *ngIf="f.quantity.errors?.required">Classes per Month is required.</div>
+            </div>
+        </div>
+        <div class="form-group row mt-2">
+            <label for="scheduled" class="col-sm-2 col-form-label">Class dates</label>
+            <div class="col-sm-10">
+                <textarea [(ngModel)]="student.scheduled" formControlName="scheduled" id="scheduled" type="text" class="form-control" rows="5"></textarea>
+            </div>
+            <div *ngIf="f.scheduled.touched && f.scheduled.invalid" class="alert alert-danger">
+                <div *ngIf="f.scheduled.errors?.required">Class date is required.</div>
+            </div>
+        </div>
+        <div class="form-group row mt-2">
+            <label for="timelapse" class="col-sm-2 col-form-label">Time Lapse(Difference)</label>
+            <div class="col-sm-10">
+              <input type="number" [(ngModel)]="student.timelapse" formControlName="timelapse" class="form-control" id="timelapse" placeholder="Time Lapse">
+            </div>
+            <div *ngIf="f.timelapse.touched && f.timelapse.invalid" class="alert alert-danger">
+                <div *ngIf="f.timelapse.errors?.required">Time lapse is required.</div>
+            </div>
+        </div>
+        <button class="btn btn-primary  mt-2" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+</div>
