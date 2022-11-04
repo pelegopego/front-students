@@ -22,7 +22,7 @@ export class IndexComponent implements OnInit {
       var auxdate = new Date();
       data.forEach(element => {
         auxdate.setTime(currentdate.getTime() + element.timelapse * 60 * 60 * 1000);
-        element.auxHour =  auxdate.getHours() + ':' + (auxdate.getMinutes()<10?'0':'') + auxdate.getMinutes();
+        element.auxHour =  (auxdate.getHours()<10?'0':'') + auxdate.getHours() + ':' + (auxdate.getMinutes()<10?'0':'') + auxdate.getMinutes();
         this.totalMoney += element.price * element.quantity;
         this.totalClasses += element.quantity;
       });
